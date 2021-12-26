@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>More Dom</title>
+  </head>
+  <body>
+    <div class="container">
+      Hi I am div
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul id="menuList">
+      <li>Home</li>
+      <li class="highlight">Products</li>
+      <li>About us</li>
+      <li>Our story</li>
+    </ul>
+    <div class="main">we are here to support you</div>
+    <input type="checkbox" onchange="theme()" name="mood" id="light-dark" />
+    <!-- Custom scripts, edit above this line -->
+    <script src="./index.js"></script>
+  </body>
+  <script>
+
+
+
+
+      // where I can link my js file
+
+// window.alert === alert()
+
+// -Node-
+// In the context of the DOM, a node is a single point in the node tree. Various things that are nodes are the document itself, elements, text, and comments.
+
+// document.querySelectorAll() will return A non-live NodeList 🧐
+// -NodeList-
+// NodeList objects are collections of nodes, usually returned by properties such as Node.childNodes and methods such as document.querySelectorAll().
+
+// Node tree https://dom.spec.whatwg.org/#concept-node
+
+const container = document.querySelector(".container");
+
+const spanList = document.querySelectorAll(".container span");
+console.log(spanList);
+spanList.forEach((span) => {
+  span.innerHTML = "Nice 🤓 <br>";
+  span.style.backgroundColor = "orange";
+});
+
+console.log(spanList.length);
+spanList[2].style.backgroundColor = "red";
+
+const menu = document.querySelector("#menuList");
+
+// const highlight = document.querySelector(".highlight");
+// highlight.style.backgroundColor = "yellow";
+
+// + > ~
+const highlight = document.querySelectorAll("li[class='highlight']");
+console.log(highlight);
+highlight[0].style.backgroundColor = "blue";
+
+const moreClass = document.querySelector(".main");
+moreClass.classList.add("text");
+moreClass.classList.add("small");
+moreClass.classList.add("cool", "flex-size");
+console.log(moreClass.classList);
+moreClass.classList.remove("flex-size");
+console.log(moreClass.classList);
+let classArr = ["classOne", "classTwo"];
+// adding more classes to the div using ...
+moreClass.classList.add(...classArr);
+console.log(moreClass.classList);
+
+// keep on mind font-size in js fontSize
+
+moreClass.style.color = "red";
+moreClass.style.cssText = "font-size: 2.0rem; color: blue;";
+
+const theme = () => {
+  const mood = document.querySelector("#light-dark").checked;
+  body = document.querySelector("body").style;
+  console.log(mood);
+  if (mood) {
+    body.backgroundColor = "black";
+  } else {
+    body.backgroundColor = "white";
+  }
+};
+  </script>
+</html>
